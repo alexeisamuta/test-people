@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect} from "react";
 import {CardGrid} from "./card/CardGrid";
 import {useDispatch, useSelector} from "react-redux";
 import {setUsersTC} from "./redux/persons-reducer";
