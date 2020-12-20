@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect} from 'react';
+import {CardGrid} from "./card/CardGrid";
+import {useDispatch, useSelector} from "react-redux";
+import {setUsersTC} from "./redux/persons-reducer";
+import {Header} from "./header/Header";
+import {RootStoreSelector} from "./redux/persons-selectors";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    const {numberPeople} = useSelector(RootStoreSelector)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(setUsersTC(numberPeople))
+    }, [dispatch, numberPeople])
+
+    return <div>
+        <Header/>
+        <CardGrid/>
     </div>
-  );
 }
 
 export default App;
